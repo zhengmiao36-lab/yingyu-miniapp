@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "门店商城",
+  "usingComponents": {
+    "stage-poster": "/components/stage-poster/index"
+  }
+}

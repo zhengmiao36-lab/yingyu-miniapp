@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "演员详情",
+  "usingComponents": {
+    "actor-art": "/components/actor-art/index"
+  }
+}

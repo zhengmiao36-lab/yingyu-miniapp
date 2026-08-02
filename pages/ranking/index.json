@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "榜单",
+  "usingComponents": {
+    "stage-poster": "/components/stage-poster/index",
+    "actor-art": "/components/actor-art/index"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "卡司排班",
+  "usingComponents": {
+    "stage-poster": "/components/stage-poster/index"
+  }
+}

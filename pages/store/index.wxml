@@ -1,0 +1,33 @@
+<view class="page-shell store-page">
+  <view class="store-header surface">
+    <view>
+      <text class="eyebrow">MALL</text>
+      <text class="store-header__title">门店商城</text>
+      <text class="store-header__meta">积分周边 · 到店核销</text>
+    </view>
+    <view class="store-header__poster">
+      <stage-poster compact title="雾隐" subtitle="" />
+    </view>
+  </view>
+
+  <view class="cart-summary surface" wx:if="{{cartCount > 0}}">
+    <text>演示订单</text>
+    <text class="cart-summary__count">{{cartCount}} 件</text>
+  </view>
+
+  <view class="product-grid">
+    <view class="product-card surface" wx:for="{{products}}" wx:key="id">
+      <view class="product-art product-art--{{item.id}}" aria-label="{{item.name}}商品示意图">
+        <view class="product-art__ring"></view>
+        <view class="product-art__petal product-art__petal--one"></view>
+        <view class="product-art__petal product-art__petal--two"></view>
+        <text class="product-art__label">{{item.label}}</text>
+      </view>
+      <text class="product-card__name">{{item.name}}</text>
+      <text class="product-card__meta">+{{item.points}} 卡司积分</text>
+      <text class="product-card__meta">+{{item.memberPoints}} 会员消费积分</text>
+      <text class="product-card__price">¥{{item.price}}</text>
+      <button class="buy-button pressable" data-id="{{item.id}}" bindtap="buyProduct">购买</button>
+    </view>
+  </view>
+</view>

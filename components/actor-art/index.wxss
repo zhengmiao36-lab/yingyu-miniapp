@@ -1,0 +1,145 @@
+.actor-art {
+  position: relative;
+  overflow: hidden;
+  background: #2b2022;
+}
+
+.size-card {
+  height: 330rpx;
+}
+
+.size-avatar {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+}
+
+.size-detail {
+  height: 540rpx;
+  border: 1rpx solid #5a4d31;
+  border-radius: 8rpx;
+}
+
+.theme-wine { background: linear-gradient(155deg, #663743, #151719 68%); }
+.theme-blue { background: linear-gradient(155deg, #315467, #151719 68%); }
+.theme-amber { background: linear-gradient(155deg, #7c4b27, #171715 68%); }
+.theme-jade { background: linear-gradient(155deg, #356254, #161817 68%); }
+.theme-silver { background: linear-gradient(155deg, #697382, #1b1d20 68%); }
+.theme-ember { background: linear-gradient(155deg, #71332c, #171515 68%); }
+.theme-slate { background: linear-gradient(155deg, #454e59, #171819 68%); }
+.theme-violet { background: linear-gradient(155deg, #57415f, #18161a 68%); }
+.theme-teal { background: linear-gradient(155deg, #2e5c5c, #151818 68%); }
+
+.actor-art::before,
+.actor-art::after {
+  content: '';
+  position: absolute;
+  width: 140%;
+  height: 1rpx;
+  left: -20%;
+  top: 28%;
+  background: rgba(238, 212, 151, 0.25);
+  transform: rotate(-24deg);
+}
+
+.actor-art::after {
+  top: 62%;
+  transform: rotate(18deg);
+}
+
+.actor-art__halo {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  width: 68%;
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  border: 1rpx solid rgba(240, 217, 149, 0.32);
+  border-radius: 50%;
+  box-shadow: 0 0 36rpx rgba(224, 189, 111, 0.14);
+}
+
+.actor-art__figure {
+  position: absolute;
+  left: 50%;
+  bottom: -4%;
+  width: 76%;
+  height: 74%;
+  transform: translateX(-50%);
+}
+
+.actor-art__head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 30%;
+  aspect-ratio: 0.82;
+  transform: translateX(-50%);
+  border-radius: 48% 48% 42% 42%;
+  background: linear-gradient(150deg, #dcc9ac, #987a61);
+}
+
+.actor-art__head::before {
+  content: '';
+  position: absolute;
+  top: -16%;
+  left: -12%;
+  width: 124%;
+  height: 58%;
+  border-radius: 50% 50% 28% 28%;
+  background: #171515;
+}
+
+.actor-art__robe {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100%;
+  height: 68%;
+  transform: translateX(-50%);
+  clip-path: polygon(26% 0, 74% 0, 100% 100%, 0 100%);
+  background:
+    linear-gradient(90deg, transparent 47%, rgba(237, 211, 149, 0.34) 49%, transparent 52%),
+    rgba(12, 13, 13, 0.86);
+}
+
+.actor-art__seal {
+  position: absolute;
+  right: 12rpx;
+  top: 12rpx;
+  width: 46rpx;
+  height: 46rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx solid rgba(239, 213, 151, 0.55);
+  color: #efd797;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 26rpx;
+}
+
+.actor-art__caption {
+  position: absolute;
+  right: 28rpx;
+  bottom: 28rpx;
+  left: 28rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.actor-art__name {
+  color: #f4efe4;
+  font-size: 42rpx;
+  font-weight: 700;
+}
+
+.actor-art__role {
+  color: #d6b66f;
+  font-size: 26rpx;
+}
+
+.size-avatar .actor-art__seal,
+.size-avatar .actor-art__caption {
+  display: none;
+}

@@ -1,0 +1,11 @@
+<view class="poster {{compact ? 'poster--compact' : ''}}" aria-label="{{title}}，{{subtitle}}">
+  <view class="poster__mesh"></view>
+  <view class="poster__moon"></view>
+  <view class="poster__gate poster__gate--left"></view>
+  <view class="poster__gate poster__gate--right"></view>
+  <view class="poster__copy">
+    <text class="poster__eyebrow">{{eyebrow}}</text>
+    <text class="poster__title">{{title}}</text>
+    <text class="poster__subtitle">{{subtitle}}</text>
+  </view>
+</view>

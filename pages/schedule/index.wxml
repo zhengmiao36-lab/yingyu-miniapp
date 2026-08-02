@@ -1,0 +1,94 @@
+<view class="page-shell schedule-page">
+  <stage-poster title="雾隐长安" subtitle="沉浸式互动剧场" />
+
+  <view class="member-strip surface">
+    <view class="member-strip__mark">VIP</view>
+    <text class="member-strip__text">全局优享票权益已开通 · 整年 · 任意单人</text>
+  </view>
+
+  <view class="week-switcher surface">
+    <button
+      class="week-switcher__button pressable"
+      aria-label="查看上一周"
+      data-direction="-1"
+      bindtap="changeWeek"
+      disabled="{{weekOffset === -1}}"
+    >‹</button>
+    <text class="week-switcher__label">{{weekLabel}}</text>
+    <button
+      class="week-switcher__button pressable"
+      aria-label="查看下一周"
+      data-direction="1"
+      bindtap="changeWeek"
+      disabled="{{weekOffset === 1}}"
+    >›</button>
+  </view>
+
+  <button class="past-toggle surface pressable" bindtap="togglePast" aria-expanded="{{showPast}}">
+    <view class="past-toggle__copy">
+      <text class="past-toggle__dot"></text>
+      <text>往期排班 2 天</text>
+    </view>
+    <text class="past-toggle__action">{{showPast ? '收起' : '展开'}} {{showPast ? '^' : 'v'}}</text>
+  </button>
+
+  <block wx:if="{{showPast}}">
+    <view class="day-card surface day-card--past" wx:for="{{pastDays}}" wx:key="date" wx:for-item="day">
+      <view class="day-card__header">
+        <view>
+          <text class="day-card__date">{{day.date}}</text>
+          <text class="day-card__weekday">{{day.weekday}}</text>
+        </view>
+        <text class="day-card__badge">往期</text>
+      </view>
+      <view class="session" wx:for="{{day.sessions}}" wx:key="time" wx:for-item="session">
+        <view class="session__top">
+          <view>
+            <text class="session__time">{{session.time}}</text>
+            <text class="session__status">{{session.status}}</text>
+          </view>
+          <text class="session__sold">已结束</text>
+        </view>
+        <view class="cast-grid">
+          <view class="cast-chip cast-chip--{{member.tone}}" wx:for="{{session.cast}}" wx:key="role" wx:for-item="member">
+            {{member.role}}-{{member.actor}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="day-card surface" wx:for="{{scheduleDays}}" wx:key="date" wx:for-item="day">
+    <view class="day-card__header">
+      <view>
+        <text class="day-card__date">{{day.date}}</text>
+        <text class="day-card__weekday">{{day.weekday}}</text>
+      </view>
+      <button class="cast-count pressable" bindtap="openCast">卡司照 9</button>
+    </view>
+
+    <view class="session" wx:for="{{day.sessions}}" wx:key="time" wx:for-item="session">
+      <view class="session__top">
+        <view>
+          <text class="session__time">{{session.time}}</text>
+          <text class="session__status">{{session.status}}</text>
+        </view>
+        <view class="session__actions">
+          <text class="session__left">余 {{session.left}} 张</text>
+          <button
+            class="primary-button pressable"
+            data-date="{{day.date}}"
+            data-time="{{session.time}}"
+            bindtap="buyTicket"
+          >购票</button>
+        </view>
+      </view>
+
+      <view class="cast-grid">
+        <view class="cast-chip cast-chip--{{member.tone}}" wx:for="{{session.cast}}" wx:key="role" wx:for-item="member">
+          {{member.role}}-{{member.actor}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

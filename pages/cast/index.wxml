@@ -1,0 +1,31 @@
+<view class="page-shell cast-page">
+  <view class="cast-header surface">
+    <view class="cast-header__copy">
+      <text class="eyebrow">CAST</text>
+      <text class="cast-header__title">演员阵容</text>
+      <text class="cast-header__meta">本周在场 9 位</text>
+    </view>
+    <view class="cast-header__poster">
+      <stage-poster compact title="雾隐长安" subtitle="" />
+    </view>
+  </view>
+
+  <view class="actor-grid">
+    <view
+      class="actor-card surface pressable"
+      wx:for="{{actors}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="openActor"
+      role="button"
+      aria-label="查看演员{{item.name}}详情"
+      hover-class="actor-card--pressed"
+    >
+      <actor-art name="{{item.name}}" role="{{item.role}}" theme="{{item.theme}}" />
+      <view class="actor-card__copy">
+        <text class="actor-card__name">{{item.name}}</text>
+        <text class="actor-card__role">{{item.role}}</text>
+      </view>
+    </view>
+  </view>
+</view>

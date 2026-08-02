@@ -1,0 +1,271 @@
+.ranking-page {
+  padding-top: 18rpx;
+}
+
+.ranking-header {
+  height: 200rpx;
+  padding: 28rpx 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.ranking-header__title,
+.ranking-header__copy {
+  display: block;
+}
+
+.ranking-header__title {
+  margin-top: 8rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 42rpx;
+  font-weight: 700;
+}
+
+.ranking-header__copy {
+  margin-top: 10rpx;
+  color: var(--text-soft);
+  font-size: 23rpx;
+}
+
+.ranking-header__poster {
+  width: 130rpx;
+  height: 130rpx;
+  overflow: hidden;
+}
+
+.ranking-header__poster stage-poster {
+  display: block;
+  width: 200rpx;
+  transform: scale(0.65);
+  transform-origin: top left;
+}
+
+.ranking-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background: #f6f4ef;
+}
+
+.ranking-tab {
+  min-height: 88rpx;
+  border-bottom: 5rpx solid transparent;
+  background: transparent;
+  color: #55544e;
+  font-size: 25rpx;
+}
+
+.ranking-tab--active {
+  border-bottom-color: #b89345;
+  color: #292720;
+  font-weight: 700;
+}
+
+.period-switcher {
+  min-height: 116rpx;
+  margin-top: 22rpx;
+  padding: 12rpx 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.period-switcher__button {
+  width: 88rpx;
+  height: 88rpx;
+  border: 1rpx solid var(--gold-dim);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--gold);
+  font-size: 38rpx;
+}
+
+.period-switcher__button[disabled] {
+  border-color: #35352f;
+  color: #4b4942;
+}
+
+.period-switcher__copy {
+  text-align: center;
+}
+
+.period-switcher__eyebrow,
+.period-switcher__title {
+  display: block;
+}
+
+.period-switcher__eyebrow {
+  color: var(--gold);
+  font-size: 24rpx;
+}
+
+.period-switcher__title {
+  margin-top: 7rpx;
+  font-size: 31rpx;
+  font-weight: 800;
+}
+
+.ranking-section-title {
+  margin: 26rpx 4rpx 14rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 32rpx;
+  font-weight: 800;
+}
+
+.ranking-section-title__hint {
+  color: var(--muted);
+  font-size: 24rpx;
+  font-weight: 400;
+}
+
+.podium-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12rpx;
+}
+
+.podium-card {
+  position: relative;
+  min-width: 0;
+  min-height: 302rpx;
+  padding: 26rpx 12rpx 16rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-image: linear-gradient(155deg, rgba(122, 93, 44, 0.34), transparent 58%);
+}
+
+.podium-card__rank {
+  position: absolute;
+  top: 12rpx;
+  left: 12rpx;
+  min-width: 50rpx;
+  height: 40rpx;
+  padding: 0 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20rpx;
+  background: var(--gold);
+  color: #241c0d;
+  font-size: 20rpx;
+  font-weight: 800;
+}
+
+.podium-card actor-art {
+  margin-top: 6rpx;
+}
+
+.podium-card__top,
+.podium-card__name,
+.podium-card__points {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.podium-card__top {
+  margin-top: 12rpx;
+  color: var(--gold);
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.podium-card__name {
+  margin-top: 2rpx;
+  font-size: 25rpx;
+  font-weight: 700;
+}
+
+.podium-card__points {
+  margin-top: 8rpx;
+  color: var(--gold);
+  font-size: 24rpx;
+}
+
+.rank-list {
+  margin-top: 18rpx;
+}
+
+.rank-row {
+  min-height: 146rpx;
+  margin-top: 12rpx;
+  padding: 18rpx 18rpx;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.rank-row__number {
+  width: 56rpx;
+  height: 56rpx;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #34342f;
+  color: #c9c3b7;
+  font-size: 25rpx;
+  font-weight: 700;
+}
+
+.rank-row__copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.rank-row__name,
+.rank-row__role,
+.rank-row__points {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rank-row__name {
+  font-size: 27rpx;
+  font-weight: 700;
+}
+
+.rank-row__role {
+  color: var(--muted);
+  font-size: 24rpx;
+}
+
+.rank-row__points {
+  margin-top: 8rpx;
+  color: var(--gold);
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.rank-row__action {
+  min-width: 110rpx;
+  min-height: 88rpx;
+  border: 1rpx solid var(--gold-dim);
+  border-radius: 32rpx;
+  background: transparent;
+  color: var(--gold);
+  font-size: 24rpx;
+}
+
+.my-rank {
+  min-height: 82rpx;
+  margin-top: 16rpx;
+  padding: 0 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.my-rank__value {
+  color: var(--gold);
+}

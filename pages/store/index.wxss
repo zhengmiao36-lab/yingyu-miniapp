@@ -1,0 +1,171 @@
+.store-page {
+  padding-top: 18rpx;
+}
+
+.store-header {
+  height: 200rpx;
+  padding: 28rpx 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.store-header__title,
+.store-header__meta {
+  display: block;
+}
+
+.store-header__title {
+  margin-top: 8rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 44rpx;
+  font-weight: 700;
+}
+
+.store-header__meta {
+  margin-top: 10rpx;
+  color: var(--text-soft);
+  font-size: 24rpx;
+}
+
+.store-header__poster {
+  width: 132rpx;
+  height: 132rpx;
+  overflow: hidden;
+}
+
+.store-header__poster stage-poster {
+  display: block;
+  width: 200rpx;
+  transform: scale(0.66);
+  transform-origin: top left;
+}
+
+.cart-summary {
+  min-height: 74rpx;
+  margin-top: 18rpx;
+  padding: 0 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-soft);
+}
+
+.cart-summary__count {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.product-grid {
+  margin-top: 22rpx;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16rpx;
+}
+
+.product-card {
+  min-width: 0;
+  padding: 14rpx;
+}
+
+.product-art {
+  position: relative;
+  height: 212rpx;
+  overflow: hidden;
+  border: 1rpx solid rgba(214, 182, 111, 0.42);
+  border-radius: 6rpx;
+  background-color: #20211f;
+  background-image:
+    linear-gradient(155deg, rgba(174, 133, 59, 0.22), transparent 45%),
+    linear-gradient(20deg, rgba(67, 38, 43, 0.3), transparent 54%);
+}
+
+.product-art--solo { background-color: #1d262a; }
+.product-art--candle { background-color: #2b2118; }
+.product-art--bouquet { background-color: #261d22; }
+
+.product-art__ring {
+  position: absolute;
+  top: 48rpx;
+  left: 50%;
+  width: 92rpx;
+  height: 92rpx;
+  transform: translateX(-50%);
+  border: 12rpx double #a88642;
+  border-radius: 50%;
+  box-shadow: 0 0 28rpx rgba(230, 196, 116, 0.2);
+}
+
+.product-art__petal {
+  position: absolute;
+  width: 54rpx;
+  height: 30rpx;
+  border: 1rpx solid rgba(230, 196, 116, 0.44);
+  border-radius: 70% 20% 70% 20%;
+  background: rgba(119, 41, 51, 0.6);
+}
+
+.product-art__petal--one {
+  left: 40rpx;
+  bottom: 38rpx;
+  transform: rotate(-18deg);
+}
+
+.product-art__petal--two {
+  right: 36rpx;
+  bottom: 34rpx;
+  transform: rotate(24deg);
+}
+
+.product-art__label {
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  min-height: 40rpx;
+  padding: 0 12rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 20rpx;
+  background: #d8b86d;
+  color: #2b220f;
+  font-size: 18rpx;
+  font-weight: 700;
+}
+
+.product-card__name,
+.product-card__meta,
+.product-card__price {
+  display: block;
+}
+
+.product-card__name {
+  margin-top: 14rpx;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.product-card__meta {
+  margin-top: 5rpx;
+  color: var(--text-soft);
+  font-size: 24rpx;
+  line-height: 1.35;
+}
+
+.product-card__price {
+  margin-top: 12rpx;
+  color: var(--gold-strong);
+  font-size: 31rpx;
+  font-weight: 800;
+}
+
+.buy-button {
+  width: 100%;
+  min-height: 88rpx;
+  margin-top: 12rpx;
+  border-radius: 6rpx;
+  background: #28b96f;
+  color: #07170e;
+  font-size: 25rpx;
+  font-weight: 800;
+}

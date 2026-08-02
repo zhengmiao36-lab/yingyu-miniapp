@@ -1,0 +1,12 @@
+<view class="actor-art theme-{{theme}} size-{{size}}" aria-label="{{name}}，饰演{{role}}">
+  <view class="actor-art__halo"></view>
+  <view class="actor-art__figure">
+    <view class="actor-art__head"></view>
+    <view class="actor-art__robe"></view>
+  </view>
+  <view class="actor-art__seal">{{initial}}</view>
+  <view class="actor-art__caption" wx:if="{{size === 'detail'}}">
+    <text class="actor-art__name">{{name}}</text>
+    <text class="actor-art__role">{{role}}</text>
+  </view>
+</view>

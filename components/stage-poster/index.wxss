@@ -1,0 +1,116 @@
+.poster {
+  position: relative;
+  height: 360rpx;
+  overflow: hidden;
+  border: 1rpx solid #5a4d31;
+  border-radius: 8rpx;
+  background-color: #111312;
+  background-image:
+    radial-gradient(circle at 50% 10%, rgba(219, 185, 105, 0.38), transparent 17%),
+    linear-gradient(155deg, rgba(95, 73, 35, 0.25), transparent 38%),
+    linear-gradient(25deg, rgba(57, 27, 33, 0.38), transparent 42%);
+}
+
+.poster--compact {
+  height: 200rpx;
+}
+
+.poster__mesh {
+  position: absolute;
+  top: -180rpx;
+  left: 50%;
+  width: 520rpx;
+  height: 520rpx;
+  transform: translateX(-50%) rotate(45deg);
+  border: 1rpx solid rgba(214, 182, 111, 0.34);
+  box-shadow:
+    0 0 0 42rpx rgba(214, 182, 111, 0.025),
+    0 0 0 86rpx rgba(214, 182, 111, 0.02),
+    0 0 0 132rpx rgba(214, 182, 111, 0.018);
+}
+
+.poster__mesh::before,
+.poster__mesh::after {
+  content: '';
+  position: absolute;
+  inset: 25%;
+  border: 1rpx solid rgba(214, 182, 111, 0.22);
+}
+
+.poster__mesh::after {
+  inset: 40%;
+  background: rgba(214, 182, 111, 0.12);
+}
+
+.poster__moon {
+  position: absolute;
+  top: 38rpx;
+  left: 50%;
+  width: 86rpx;
+  height: 86rpx;
+  transform: translateX(-50%);
+  border: 1rpx solid rgba(235, 208, 145, 0.62);
+  border-radius: 50%;
+  box-shadow: 0 0 42rpx rgba(214, 182, 111, 0.2);
+}
+
+.poster__gate {
+  position: absolute;
+  bottom: -42rpx;
+  width: 230rpx;
+  height: 210rpx;
+  border-top: 2rpx solid rgba(214, 182, 111, 0.22);
+  background: rgba(3, 4, 4, 0.68);
+}
+
+.poster__gate--left {
+  left: -78rpx;
+  transform: skewY(9deg);
+}
+
+.poster__gate--right {
+  right: -78rpx;
+  transform: skewY(-9deg);
+}
+
+.poster__copy {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 74rpx;
+  text-shadow: 0 3rpx 16rpx #000;
+}
+
+.poster--compact .poster__copy {
+  padding-top: 34rpx;
+}
+
+.poster__eyebrow {
+  margin-bottom: 6rpx;
+  color: #c7a761;
+  font-size: 18rpx;
+  letter-spacing: 0;
+}
+
+.poster__title {
+  color: #f0d995;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 76rpx;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.poster--compact .poster__title {
+  font-size: 54rpx;
+}
+
+.poster__subtitle {
+  margin-top: 10rpx;
+  color: #e7dfcf;
+  font-size: 24rpx;
+}

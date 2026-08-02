@@ -1,0 +1,46 @@
+<view class="page-shell detail-page" wx:if="{{actor}}">
+  <actor-art
+    name="{{actor.name}}"
+    role="{{actor.role}}"
+    theme="{{actor.theme}}"
+    size="detail"
+  />
+
+  <view class="profile-summary surface">
+    <view>
+      <text class="profile-summary__name">{{actor.name}}</text>
+      <text class="profile-summary__role">饰演 {{actor.role}}</text>
+    </view>
+    <view class="profile-summary__score">
+      <text class="eyebrow">本期卡司积分</text>
+      <text class="profile-summary__points">{{actor.points}}</text>
+    </view>
+  </view>
+
+  <view class="detail-section surface">
+    <text class="detail-section__title">角色小传</text>
+    <text class="detail-section__body">{{actor.bio}}</text>
+  </view>
+
+  <view class="detail-section surface">
+    <text class="detail-section__title">出演角色</text>
+    <text class="role-tag">{{actor.role}}</text>
+  </view>
+
+  <view class="detail-section surface">
+    <text class="detail-section__title">近期排班</text>
+    <view class="schedule-row" wx:for="{{actor.schedules}}" wx:key="time">
+      <view>
+        <text class="schedule-row__label">{{item.label}}</text>
+        <text class="schedule-row__time">{{item.date}} {{item.time}}</text>
+      </view>
+      <button
+        class="schedule-row__status pressable {{item.status === '已售罄' ? 'schedule-row__status--disabled' : ''}}"
+        data-date="{{item.date}}"
+        data-time="{{item.time}}"
+        data-status="{{item.status}}"
+        bindtap="reserve"
+      >{{item.status}}</button>
+    </view>
+  </view>
+</view>

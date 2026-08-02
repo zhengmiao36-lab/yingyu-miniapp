@@ -1,0 +1,75 @@
+<view class="page-shell ranking-page">
+  <view class="ranking-header surface">
+    <view>
+      <text class="eyebrow">RANKING</text>
+      <text class="ranking-header__title">{{activeTab === 'cast' ? '卡司积分榜' : '会员消费积分榜'}}</text>
+      <text class="ranking-header__copy">{{activeTab === 'cast' ? '点击卡司查看个人积分排行' : '查看本期会员消费积分排行'}}</text>
+    </view>
+    <view class="ranking-header__poster">
+      <stage-poster compact title="雾隐" subtitle="" />
+    </view>
+  </view>
+
+  <view class="ranking-tabs">
+    <button class="ranking-tab pressable {{activeTab === 'cast' ? 'ranking-tab--active' : ''}}" data-tab="cast" bindtap="switchTab">卡司积分榜</button>
+    <button class="ranking-tab pressable {{activeTab === 'member' ? 'ranking-tab--active' : ''}}" data-tab="member" bindtap="switchTab">会员消费积分榜</button>
+  </view>
+
+  <view class="period-switcher surface">
+    <button class="period-switcher__button pressable" data-direction="-1" bindtap="changePeriod" disabled="{{periodOffset === -1}}">‹</button>
+    <view class="period-switcher__copy">
+      <text class="period-switcher__eyebrow">{{period}} · 本期</text>
+      <text class="period-switcher__title">{{activeTab === 'cast' ? '卡司积分排行' : '会员消费积分排行'}}</text>
+    </view>
+    <button class="period-switcher__button pressable" data-direction="1" bindtap="changePeriod" disabled="{{periodOffset === 1}}">›</button>
+  </view>
+
+  <view class="ranking-section-title">
+    <text>前三名</text>
+    <text class="ranking-section-title__hint">{{activeTab === 'cast' ? '点击卡司查看详情' : '按会员消费积分排序'}}</text>
+  </view>
+
+  <view class="podium-grid">
+    <view
+      class="podium-card surface pressable"
+      wx:for="{{ranking}}"
+      wx:key="name"
+      wx:for-index="index"
+      wx:if="{{index < 3}}"
+      data-id="{{item.id}}"
+      bindtap="openActor"
+    >
+      <text class="podium-card__rank">#{{index + 1}}</text>
+      <actor-art name="{{item.name}}" role="{{item.subtitle}}" theme="{{item.theme}}" size="avatar" />
+      <text class="podium-card__top">TOP {{index + 1}}</text>
+      <text class="podium-card__name">{{item.name}}</text>
+      <text class="podium-card__points">{{activeTab === 'cast' ? '卡司积分' : '会员消费积分'}} {{item.points}}</text>
+    </view>
+  </view>
+
+  <view class="rank-list">
+    <view
+      class="rank-row surface pressable"
+      wx:for="{{ranking}}"
+      wx:key="name"
+      wx:for-index="index"
+      wx:if="{{index >= 3}}"
+      data-id="{{item.id}}"
+      bindtap="openActor"
+    >
+      <text class="rank-row__number">{{index + 1}}</text>
+      <actor-art name="{{item.name}}" role="{{item.subtitle}}" theme="{{item.theme}}" size="avatar" />
+      <view class="rank-row__copy">
+        <text class="rank-row__name">{{item.name}}</text>
+        <text class="rank-row__role">{{item.subtitle}}</text>
+        <text class="rank-row__points">{{activeTab === 'cast' ? '卡司积分' : '会员消费积分'}} {{item.points}}</text>
+      </view>
+      <button class="rank-row__action pressable" wx:if="{{activeTab === 'cast'}}" catchtap="openStore">送花</button>
+    </view>
+  </view>
+
+  <view class="my-rank surface" wx:if="{{activeTab === 'member'}}">
+    <text>我的位次</text>
+    <text class="my-rank__value">暂未上榜</text>
+  </view>
+</view>

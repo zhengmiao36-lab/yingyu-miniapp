@@ -1,0 +1,85 @@
+.cast-page {
+  padding-top: 18rpx;
+}
+
+.cast-header {
+  height: 200rpx;
+  padding: 28rpx 32rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.cast-header__copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.cast-header__title {
+  margin-top: 6rpx;
+  font-family: "STKaiti", "KaiTi", serif;
+  font-size: 48rpx;
+  font-weight: 700;
+}
+
+.cast-header__meta {
+  margin-top: 12rpx;
+  color: var(--text-soft);
+  font-size: 24rpx;
+}
+
+.cast-header__poster {
+  width: 150rpx;
+  height: 150rpx;
+  overflow: hidden;
+}
+
+.cast-header__poster stage-poster {
+  display: block;
+  transform: scale(0.75);
+  transform-origin: top left;
+  width: 200rpx;
+}
+
+.actor-grid {
+  margin-top: 22rpx;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12rpx;
+}
+
+.actor-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.actor-card--pressed {
+  opacity: 0.72;
+}
+
+.actor-card__copy {
+  min-height: 94rpx;
+  padding: 14rpx 12rpx 16rpx;
+}
+
+.actor-card__name,
+.actor-card__role {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actor-card__name {
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.actor-card__role {
+  margin-top: 6rpx;
+  color: var(--gold);
+  font-size: 24rpx;
+}

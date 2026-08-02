@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/schedule/index",
+    "pages/cast/index",
+    "pages/ranking/index",
+    "pages/store/index",
+    "pages/profile/index",
+    "pages/actor-detail/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#090a0a",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#090a0a",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#8f8b80",
+    "selectedColor": "#d6b66f",
+    "backgroundColor": "#0c0d0d",
+    "borderStyle": "black",
+    "list": [
+      { "pagePath": "pages/schedule/index", "text": "排班" },
+      { "pagePath": "pages/cast/index", "text": "演员" },
+      { "pagePath": "pages/ranking/index", "text": "榜单" },
+      { "pagePath": "pages/store/index", "text": "商城" },
+      { "pagePath": "pages/profile/index", "text": "我的" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

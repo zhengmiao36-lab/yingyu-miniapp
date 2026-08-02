@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "演员阵容",
+  "usingComponents": {
+    "stage-poster": "/components/stage-poster/index",
+    "actor-art": "/components/actor-art/index"
+  }
+}

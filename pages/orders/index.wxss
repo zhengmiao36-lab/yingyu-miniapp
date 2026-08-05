@@ -1,0 +1,139 @@
+.orders-page {
+  padding-top: 28rpx;
+}
+
+.orders-heading {
+  padding: 8rpx 4rpx 18rpx;
+}
+
+.orders-heading__title,
+.orders-heading__hint {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.orders-heading__title {
+  margin-top: 8rpx;
+  font-size: 42rpx;
+  font-weight: 800;
+}
+
+.orders-heading__hint {
+  margin-top: 6rpx;
+  color: var(--text-soft);
+  font-size: 24rpx;
+}
+
+.order-card {
+  width: 100%;
+  min-height: 224rpx;
+  margin-top: 14rpx;
+  padding: 22rpx 24rpx;
+  display: block;
+  color: var(--text);
+  text-align: left;
+}
+
+.order-card__top,
+.order-card__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.order-card__type,
+.order-card__status,
+.order-card__title,
+.order-card__subtitle,
+.order-card__time,
+.order-card__amount {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.order-card__type {
+  color: var(--gold);
+  font-size: 22rpx;
+  font-weight: 700;
+}
+
+.order-card__status {
+  flex: 0 0 auto;
+  color: var(--text-soft);
+  font-size: 23rpx;
+}
+
+.order-card__status--paid {
+  color: var(--success);
+}
+
+.order-card__title,
+.order-card__subtitle {
+  display: block;
+}
+
+.order-card__title {
+  margin-top: 18rpx;
+  font-size: 29rpx;
+  font-weight: 800;
+}
+
+.order-card__subtitle {
+  margin-top: 6rpx;
+  color: var(--text-soft);
+  font-size: 23rpx;
+}
+
+.order-card__bottom {
+  margin-top: 24rpx;
+  padding-top: 16rpx;
+  border-top: 1rpx solid rgba(116, 98, 61, 0.3);
+}
+
+.order-card__time {
+  min-width: 0;
+  color: var(--muted);
+  font-size: 22rpx;
+}
+
+.order-card__amount {
+  flex: 0 0 auto;
+  color: var(--gold-strong);
+  font-size: 29rpx;
+  font-weight: 800;
+}
+
+.orders-empty {
+  margin-top: 14rpx;
+  padding: 70rpx 28rpx 54rpx;
+  text-align: center;
+}
+
+.orders-empty__title,
+.orders-empty__copy {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.orders-empty__title {
+  font-size: 31rpx;
+  font-weight: 800;
+}
+
+.orders-empty__copy {
+  margin-top: 10rpx;
+  color: var(--text-soft);
+  font-size: 23rpx;
+}
+
+.orders-empty__button {
+  width: 220rpx;
+  margin: 24rpx auto 0;
+  font-size: 25rpx;
+}

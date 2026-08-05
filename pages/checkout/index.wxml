@@ -1,0 +1,55 @@
+<view class="page-shell checkout-page {{pageMotionClass}}" wx:if="{{itemTitle}}">
+  <view class="checkout-heading">
+    <text class="eyebrow">CHECKOUT</text>
+    <text class="checkout-heading__title">确认订单</text>
+    <text class="checkout-heading__hint">{{typeText}} · {{fulfillmentMode === 'ranking' ? '自动计入榜单' : '到店核销'}}</text>
+  </view>
+
+  <view class="checkout-summary surface">
+    <view class="checkout-summary__mark checkout-summary__mark--{{orderType}}">
+      <text>{{orderType === 'ticket' ? '票' : '礼'}}</text>
+    </view>
+    <view class="checkout-summary__copy">
+      <text class="checkout-summary__title">{{itemTitle}}</text>
+      <text class="checkout-summary__subtitle">{{itemSubtitle}}</text>
+      <text class="checkout-summary__fulfillment">{{fulfillmentLabel}}</text>
+    </view>
+    <text class="checkout-summary__price">¥{{unitPriceText}}</text>
+  </view>
+
+  <view class="checkout-detail surface">
+    <view class="checkout-row">
+      <text class="checkout-row__label">购买数量</text>
+      <view class="quantity-stepper">
+        <button class="quantity-stepper__button control-button pressable {{quantity <= 1 ? 'quantity-stepper__button--disabled control-button--disabled' : ''}}" aria-label="减少数量" data-delta="-1" bindtap="changeQuantity" disabled="{{quantity <= 1}}">−</button>
+        <text class="quantity-stepper__value">{{quantity}}</text>
+        <button class="quantity-stepper__button control-button pressable {{quantity >= maxQuantity ? 'quantity-stepper__button--disabled control-button--disabled' : ''}}" aria-label="增加数量" data-delta="1" bindtap="changeQuantity" disabled="{{quantity >= maxQuantity}}">+</button>
+      </view>
+    </view>
+    <view class="checkout-row">
+      <text class="checkout-row__label">核销门店</text>
+      <text class="checkout-row__value">影玉沉浸式剧场</text>
+    </view>
+    <view class="checkout-row">
+      <text class="checkout-row__label">有效期限</text>
+      <text class="checkout-row__value">{{validUntil}}</text>
+    </view>
+    <view class="checkout-row checkout-row--total">
+      <text class="checkout-row__label">合计</text>
+      <text class="checkout-row__total">¥{{totalAmountText}}</text>
+    </view>
+  </view>
+
+  <view class="payment-notice {{isDemoPayment ? 'payment-notice--demo' : ''}}">
+    <text class="payment-notice__title">{{isDemoPayment ? '体验模式 · 不会扣款' : '微信支付'}}</text>
+    <text class="payment-notice__copy">{{isDemoPayment ? '确认后生成可查看的演示核销凭证' : '支付成功后生成到店核销凭证'}}</text>
+  </view>
+
+  <button
+    class="checkout-submit primary-button control-button pressable {{submitting ? 'checkout-submit--disabled control-button--disabled' : ''}}"
+    aria-busy="{{submitting}}"
+    disabled="{{submitting}}"
+    bindtap="submitOrder"
+  >{{submitButtonText}}</button>
+  <text class="checkout-agreement">提交即表示同意门店购票与核销规则</text>
+</view>

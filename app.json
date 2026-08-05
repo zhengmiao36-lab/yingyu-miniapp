@@ -5,7 +5,11 @@
     "pages/ranking/index",
     "pages/store/index",
     "pages/profile/index",
-    "pages/actor-detail/index"
+    "pages/actor-detail/index",
+    "pages/gift-detail/index",
+    "pages/checkout/index",
+    "pages/orders/index",
+    "pages/order-detail/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#090a0a",

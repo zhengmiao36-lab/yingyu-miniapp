@@ -1,4 +1,4 @@
-<view class="page-shell detail-page" wx:if="{{actor}}">
+<view class="page-shell detail-page {{pageMotionClass}}" wx:if="{{actor}}">
   <actor-art
     name="{{actor.name}}"
     role="{{actor.role}}"
@@ -7,7 +7,7 @@
   />
 
   <view class="profile-summary surface">
-    <view>
+    <view class="profile-summary__copy">
       <text class="profile-summary__name">{{actor.name}}</text>
       <text class="profile-summary__role">饰演 {{actor.role}}</text>
     </view>
@@ -30,12 +30,13 @@
   <view class="detail-section surface">
     <text class="detail-section__title">近期排班</text>
     <view class="schedule-row" wx:for="{{actor.schedules}}" wx:key="time">
-      <view>
+      <view class="schedule-row__copy">
         <text class="schedule-row__label">{{item.label}}</text>
         <text class="schedule-row__time">{{item.date}} {{item.time}}</text>
       </view>
       <button
-        class="schedule-row__status pressable {{item.status === '已售罄' ? 'schedule-row__status--disabled' : ''}}"
+        class="schedule-row__status control-button pressable {{item.status === '已售罄' ? 'schedule-row__status--disabled' : ''}}"
+        aria-disabled="{{item.status === '已售罄'}}"
         data-date="{{item.date}}"
         data-time="{{item.time}}"
         data-status="{{item.status}}"

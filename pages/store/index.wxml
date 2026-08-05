@@ -1,4 +1,4 @@
-<view class="page-shell store-page">
+<view class="page-shell store-page {{pageMotionClass}}">
   <view class="store-header surface">
     <view>
       <text class="eyebrow">MALL</text>
@@ -10,9 +10,9 @@
     </view>
   </view>
 
-  <view class="cart-summary surface" wx:if="{{cartCount > 0}}">
-    <text>演示订单</text>
-    <text class="cart-summary__count">{{cartCount}} 件</text>
+  <view class="cart-summary surface motion-reveal" wx:if="{{cartCount > 0}}">
+    <text class="cart-summary__label">待核销订单</text>
+    <text class="cart-summary__count">{{cartCount}} 笔</text>
   </view>
 
   <view class="product-grid">
@@ -26,8 +26,10 @@
       <text class="product-card__name">{{item.name}}</text>
       <text class="product-card__meta">+{{item.points}} 卡司积分</text>
       <text class="product-card__meta">+{{item.memberPoints}} 会员消费积分</text>
-      <text class="product-card__price">¥{{item.price}}</text>
-      <button class="buy-button pressable" data-id="{{item.id}}" bindtap="buyProduct">购买</button>
+      <view class="product-card__action">
+        <text class="product-card__price">¥{{item.price}}</text>
+        <button class="buy-button control-button pressable" data-id="{{item.id}}" bindtap="buyProduct">购买</button>
+      </view>
     </view>
   </view>
 </view>

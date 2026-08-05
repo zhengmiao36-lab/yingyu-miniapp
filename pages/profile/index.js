@@ -1,13 +1,16 @@
 const avatarThemes = ['wine', 'blue', 'amber', 'jade', 'silver'];
+const { playPageEnter } = require('../../utils/motion');
+const { getOrders } = require('../../utils/order-store');
 
 Page({
   data: {
+    pageMotionClass: '',
     loggedIn: true,
     nickname: '观演者 021',
     savedNickname: '观演者 021',
     accountId: 'demo-02u9n4e',
     avatarTheme: 'wine',
-    cartCount: 0
+    orderCount: 0
   },
 
   onShow() {
@@ -15,9 +18,11 @@ Page({
     const storageKeys = wx.getStorageInfoSync().keys || [];
     const hasLoginPreference = storageKeys.includes('demoLoggedIn');
     this.setData({
-      cartCount: wx.getStorageSync('demoCartCount') || 0,
+      orderCount: getOrders().length,
       ...(profile || {}),
       loggedIn: hasLoginPreference ? Boolean(wx.getStorageSync('demoLoggedIn')) : true
+    }, () => {
+      playPageEnter(this);
     });
   },
 
@@ -61,15 +66,17 @@ Page({
 
   openSection(event) {
     const section = event.currentTarget.dataset.section;
+    if (section === 'orders') {
+      wx.navigateTo({ url: '/pages/orders/index' });
+      return;
+    }
     if (section === 'ranking') {
       wx.switchTab({ url: '/pages/ranking/index' });
       return;
     }
     wx.showModal({
-      title: section === 'orders' ? '我的订单' : '我的权益',
-      content: section === 'orders'
-        ? `演示订单 ${this.data.cartCount} 件，正式版需连接订单服务。`
-        : '演示权益：优先购票、积分累积、专属活动。',
+      title: '我的权益',
+      content: '演示权益：优先购票、积分累积、专属活动。',
       showCancel: false,
       confirmColor: '#8d743d'
     });

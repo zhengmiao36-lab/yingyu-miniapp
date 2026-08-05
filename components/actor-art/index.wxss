@@ -5,7 +5,7 @@
 }
 
 .size-card {
-  height: 330rpx;
+  height: 356rpx;
 }
 
 .size-avatar {
@@ -132,11 +132,13 @@
   color: #f4efe4;
   font-size: 42rpx;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .actor-art__role {
   color: #d6b66f;
   font-size: 26rpx;
+  white-space: nowrap;
 }
 
 .size-avatar .actor-art__seal,

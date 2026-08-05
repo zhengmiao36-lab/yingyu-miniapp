@@ -29,8 +29,13 @@
 }
 
 .member-strip__text {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
   color: #e8e1d3;
   font-size: 23rpx;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .week-switcher {
@@ -43,33 +48,40 @@
 }
 
 .week-switcher__button {
+  --control-inset-y: 6rpx;
+  --control-border: var(--gold-dim);
+  --control-color: var(--gold);
+  --control-radius: 8rpx;
   width: 88rpx;
-  height: 88rpx;
+  min-width: 88rpx;
+  max-width: 88rpx;
+  flex: 0 0 88rpx;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1rpx solid var(--gold-dim);
-  border-radius: 8rpx;
-  background: transparent;
-  color: var(--gold);
   font-size: 36rpx;
   line-height: 1;
 }
 
-.week-switcher__button[disabled] {
-  border-color: #282822;
-  color: #44433c;
+.week-switcher__button--disabled {
+  --control-border: #282822;
+  --control-color: #55534a;
   opacity: 0.58;
 }
 
 .week-switcher__label {
+  min-width: 0;
+  overflow: hidden;
   font-size: 34rpx;
   font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .past-toggle {
+  position: relative;
   width: 100%;
-  min-height: 88rpx;
+  min-height: 68rpx;
   margin-top: 18rpx;
   padding: 0 20rpx;
   display: flex;
@@ -77,12 +89,32 @@
   justify-content: space-between;
   color: var(--text-soft);
   font-size: 24rpx;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.past-toggle::before {
+  content: '';
+  position: absolute;
+  top: -8rpx;
+  right: 0;
+  bottom: -8rpx;
+  left: 0;
 }
 
 .past-toggle__copy {
+  min-width: 0;
   display: flex;
+  flex: 1;
   align-items: center;
   gap: 12rpx;
+}
+
+.past-toggle__label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .past-toggle__dot {
@@ -93,6 +125,7 @@
 }
 
 .past-toggle__action {
+  flex: 0 0 auto;
   color: var(--gold);
 }
 
@@ -117,6 +150,7 @@
 .day-card__date,
 .day-card__weekday {
   display: block;
+  white-space: nowrap;
 }
 
 .day-card__date {
@@ -133,15 +167,31 @@
 
 .day-card__badge,
 .cast-count {
-  min-height: 88rpx;
   padding: 0 18rpx;
   display: flex;
   align-items: center;
+  color: var(--gold);
+  font-size: 24rpx;
+}
+
+.day-card__badge {
+  min-height: 52rpx;
   border: 1rpx solid var(--gold-dim);
   border-radius: 27rpx;
   background: rgba(214, 182, 111, 0.06);
-  color: var(--gold);
-  font-size: 24rpx;
+}
+
+.cast-count {
+  --control-border: var(--gold-dim);
+  --control-bg: rgba(214, 182, 111, 0.06);
+  --control-color: var(--gold);
+  --control-radius: 27rpx;
+  width: 168rpx;
+  min-width: 168rpx;
+  max-width: 168rpx;
+  flex: 0 0 168rpx;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .session {
@@ -160,9 +210,16 @@
   gap: 16rpx;
 }
 
+.session__copy {
+  min-width: 0;
+}
+
 .session__time,
 .session__status {
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .session__time {
@@ -177,15 +234,26 @@
 }
 
 .session__actions {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
-  gap: 16rpx;
+  gap: 12rpx;
+}
+
+.session__actions .primary-button {
+  width: 112rpx;
+  min-width: 112rpx;
+  max-width: 112rpx;
+  flex: 0 0 112rpx;
+  padding: 0 16rpx;
+  font-size: 23rpx;
 }
 
 .session__left,
 .session__sold {
   color: var(--text-soft);
   font-size: 24rpx;
+  white-space: nowrap;
 }
 
 .cast-grid {

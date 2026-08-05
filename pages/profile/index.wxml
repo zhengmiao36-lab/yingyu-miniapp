@@ -1,10 +1,10 @@
-<view class="page-shell profile-page">
+<view class="page-shell profile-page {{pageMotionClass}}">
   <view class="profile-hero surface">
     <view class="profile-hero__backdrop">
       <stage-poster compact title="雾隐长安" subtitle="" />
     </view>
     <view class="profile-hero__content">
-      <view>
+      <view class="profile-hero__copy">
         <text class="profile-hero__title">我的</text>
         <text class="profile-hero__status">{{loggedIn ? '体验账号已登录' : '尚未登录'}}</text>
       </view>
@@ -14,18 +14,18 @@
       <text class="profile-hero__name">{{savedNickname}}</text>
       <text class="profile-hero__id">账号尾号 {{accountId}}</text>
     </view>
-    <button class="profile-hero__login pressable" bindtap="toggleLogin">
+    <button class="profile-hero__login control-button pressable" bindtap="toggleLogin">
       {{loggedIn ? '退出体验账号' : '进入体验账号'}}
     </button>
   </view>
 
-  <view class="profile-editor surface" wx:if="{{loggedIn}}">
+  <view class="profile-editor surface motion-reveal" wx:if="{{loggedIn}}">
     <view class="profile-editor__heading">
-      <view>
+      <view class="profile-editor__copy">
         <text class="profile-editor__title">个人资料</text>
         <text class="profile-editor__hint">头像和昵称会用于榜单展示</text>
       </view>
-      <button class="outline-button pressable" bindtap="changeAvatar">更换头像</button>
+      <button class="outline-button control-button pressable" bindtap="changeAvatar">更换头像</button>
     </view>
     <view class="profile-editor__form">
       <input
@@ -35,30 +35,30 @@
         aria-label="昵称"
         bindinput="updateNickname"
       />
-      <button class="outline-button pressable" bindtap="saveProfile">保存</button>
+      <button class="outline-button control-button pressable" bindtap="saveProfile">保存</button>
     </view>
   </view>
 
   <view class="profile-menu surface">
     <button class="profile-menu__row pressable" data-section="orders" bindtap="openSection">
-      <view>
+      <view class="profile-menu__copy">
         <text class="profile-menu__title">我的订单</text>
         <text class="profile-menu__hint">查看票务与商城订单</text>
       </view>
       <view class="profile-menu__right">
-        <text class="profile-menu__badge" wx:if="{{cartCount > 0}}">{{cartCount}}</text>
+        <text class="profile-menu__badge" wx:if="{{orderCount > 0}}">{{orderCount}}</text>
         <text>›</text>
       </view>
     </button>
     <button class="profile-menu__row pressable" data-section="benefits" bindtap="openSection">
-      <view>
+      <view class="profile-menu__copy">
         <text class="profile-menu__title">我的权益</text>
         <text class="profile-menu__hint">查看可用资格与权益</text>
       </view>
       <text>›</text>
     </button>
     <button class="profile-menu__row pressable" data-section="ranking" bindtap="openSection">
-      <view>
+      <view class="profile-menu__copy">
         <text class="profile-menu__title">榜单记录</text>
         <text class="profile-menu__hint">查看会员与卡司积分</text>
       </view>

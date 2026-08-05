@@ -1,0 +1,101 @@
+<view class="page-shell gift-detail-page {{pageMotionClass}}" wx:if="{{product}}">
+  <view class="gift-product surface">
+    <view class="gift-product__art" aria-label="{{product.name}}商品示意图">
+      <view class="gift-product__ring"></view>
+      <view class="gift-product__petal gift-product__petal--left"></view>
+      <view class="gift-product__petal gift-product__petal--right"></view>
+    </view>
+    <view class="gift-product__copy">
+      <text class="gift-product__name">{{product.name}}</text>
+      <text class="gift-product__type">送花打榜</text>
+      <view class="gift-product__price-line">
+        <text class="gift-product__currency">¥</text>
+        <text class="gift-product__price">{{priceText}}</text>
+        <text class="gift-product__unit">元/份</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="detail-section surface">
+    <text class="detail-section__title">商品说明</text>
+    <text class="detail-section__line">{{product.name}}，为卡司增加 {{product.points}} 卡司积分。</text>
+    <text class="detail-section__line">同时增加 {{product.memberPoints}} 会员消费积分。</text>
+    <view class="benefit-list">
+      <text class="benefit-list__item">支付后 +{{product.points}} 卡司积分</text>
+      <text class="benefit-list__item">支付后 +{{product.memberPoints}} 会员消费积分</text>
+    </view>
+  </view>
+
+  <view class="detail-section surface cast-picker">
+    <text class="detail-section__title">选择角色与卡司</text>
+    <text class="detail-section__hint">先选角色，再选择饰演该角色的卡司</text>
+
+    <view class="role-grid">
+      <button
+        class="role-option pressable {{selectedRole === item ? 'role-option--selected' : ''}}"
+        wx:for="{{roles}}"
+        wx:key="*this"
+        data-role="{{item}}"
+        aria-pressed="{{selectedRole === item}}"
+        bindtap="selectRole"
+      >{{item}}</button>
+    </view>
+
+    <view class="cast-picker__empty" wx:if="{{!selectedRole}}">请选择角色</view>
+
+    <view class="cast-option-grid" wx:else>
+      <button
+        class="cast-option pressable {{selectedActorId === item.id ? 'cast-option--selected' : ''}}"
+        wx:for="{{visibleActors}}"
+        wx:key="id"
+        data-id="{{item.id}}"
+        aria-pressed="{{selectedActorId === item.id}}"
+        bindtap="selectActor"
+       style="width: auto; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx">
+        <actor-art name="{{item.name}}" role="{{item.role}}" theme="{{item.theme}}" size="avatar" />
+        <view class="cast-option__copy">
+          <text class="cast-option__name">{{item.name}}</text>
+          <text class="cast-option__role">饰演 · {{item.role}}</text>
+        </view>
+        <text class="cast-option__state" wx:if="{{selectedActorId === item.id}}">已选择</text>
+      </button>
+    </view>
+  </view>
+
+  <view class="quantity-section surface">
+    <view class="quantity-section__copy">
+      <text class="quantity-section__title">购买数量</text>
+      <text class="quantity-section__hint">支付后自动计入所选卡司榜单</text>
+    </view>
+    <view class="quantity-stepper">
+      <button
+        class="quantity-stepper__button control-button pressable {{quantity <= 1 ? 'control-button--disabled' : ''}}"
+        aria-label="减少数量"
+        data-delta="-1"
+        disabled="{{quantity <= 1}}"
+        bindtap="changeQuantity"
+      >−</button>
+      <text class="quantity-stepper__value">{{quantity}}</text>
+      <button
+        class="quantity-stepper__button control-button pressable {{quantity >= maxQuantity ? 'control-button--disabled' : ''}}"
+        aria-label="增加数量"
+        data-delta="1"
+        disabled="{{quantity >= maxQuantity}}"
+        bindtap="changeQuantity"
+      >+</button>
+    </view>
+  </view>
+
+  <view class="binding-summary surface">
+    <text class="binding-summary__label">绑定卡司</text>
+    <text class="binding-summary__value">{{selectedActorName ? selectedActorName + ' · ' + selectedRole : '待选择'}}</text>
+  </view>
+
+  <button
+    class="gift-detail-submit primary-button control-button pressable {{!selectedActorId ? 'gift-detail-submit--disabled control-button--disabled' : ''}}"
+    disabled="{{!selectedActorId}}"
+    bindtap="continueCheckout"
+  >
+    {{selectedActorId ? '去结算 ¥' + totalAmountText : '选择卡司后结算'}}
+  </button>
+</view>

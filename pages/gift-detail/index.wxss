@@ -1,0 +1,368 @@
+.gift-detail-page {
+  padding-top: 18rpx;
+  padding-bottom: 48rpx;
+}
+
+.gift-product {
+  min-height: 246rpx;
+  padding: 24rpx;
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.gift-product__art {
+  position: relative;
+  width: 178rpx;
+  height: 178rpx;
+  flex: 0 0 178rpx;
+  overflow: hidden;
+  border: 1rpx solid rgba(214, 182, 111, 0.45);
+  border-radius: 6rpx;
+  background:
+    linear-gradient(155deg, rgba(174, 133, 59, 0.26), transparent 46%),
+    linear-gradient(24deg, rgba(82, 35, 43, 0.36), transparent 58%),
+    #20211f;
+}
+
+.gift-product__ring {
+  position: absolute;
+  top: 42rpx;
+  left: 50%;
+  width: 76rpx;
+  height: 76rpx;
+  transform: translateX(-50%);
+  border: 12rpx double #a88642;
+  border-radius: 50%;
+  box-shadow: 0 0 28rpx rgba(230, 196, 116, 0.2);
+}
+
+.gift-product__petal {
+  position: absolute;
+  bottom: 28rpx;
+  width: 60rpx;
+  height: 34rpx;
+  border: 1rpx solid rgba(230, 196, 116, 0.44);
+  border-radius: 70% 20% 70% 20%;
+  background: rgba(119, 41, 51, 0.68);
+}
+
+.gift-product__petal--left {
+  left: 28rpx;
+  transform: rotate(-18deg);
+}
+
+.gift-product__petal--right {
+  right: 24rpx;
+  transform: rotate(24deg);
+}
+
+.gift-product__copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.gift-product__name,
+.gift-product__type,
+.gift-product__currency,
+.gift-product__price,
+.gift-product__unit {
+  white-space: nowrap;
+}
+
+.gift-product__name {
+  display: block;
+  overflow: hidden;
+  font-size: 36rpx;
+  font-weight: 800;
+  text-overflow: ellipsis;
+}
+
+.gift-product__type {
+  display: block;
+  margin-top: 10rpx;
+  color: var(--text-soft);
+  font-size: 23rpx;
+}
+
+.gift-product__price-line {
+  margin-top: 18rpx;
+  display: flex;
+  align-items: baseline;
+}
+
+.gift-product__currency,
+.gift-product__price {
+  color: var(--gold-strong);
+  font-weight: 800;
+}
+
+.gift-product__currency {
+  margin-right: 4rpx;
+  font-size: 26rpx;
+}
+
+.gift-product__price {
+  font-size: 46rpx;
+}
+
+.gift-product__unit {
+  margin-left: 8rpx;
+  color: var(--muted);
+  font-size: 22rpx;
+}
+
+.detail-section {
+  margin-top: 20rpx;
+  padding: 24rpx;
+}
+
+.detail-section__title,
+.detail-section__line,
+.detail-section__hint {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.detail-section__title {
+  font-size: 31rpx;
+  font-weight: 800;
+}
+
+.detail-section__line,
+.detail-section__hint {
+  color: var(--text-soft);
+  font-size: 23rpx;
+}
+
+.detail-section__line {
+  margin-top: 8rpx;
+}
+
+.detail-section__hint {
+  margin-top: 5rpx;
+}
+
+.benefit-list {
+  margin-top: 18rpx;
+}
+
+.benefit-list__item {
+  position: relative;
+  min-height: 42rpx;
+  padding-left: 36rpx;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-size: 24rpx;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.benefit-list__item::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+.role-grid {
+  margin-top: 18rpx;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10rpx;
+}
+
+.role-option {
+  min-width: 0;
+  min-height: 88rpx;
+  padding: 0 8rpx;
+  overflow: hidden;
+  border: 1rpx solid #4b4941;
+  border-radius: 6rpx;
+  background: #171916;
+  color: var(--text-soft);
+  font-size: 22rpx;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.role-option--selected {
+  border-color: var(--gold);
+  background: rgba(214, 182, 111, 0.14);
+  color: var(--gold-strong);
+}
+
+.cast-option-grid {
+  margin-top: 18rpx;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12rpx;
+}
+
+.cast-picker__empty {
+  min-height: 136rpx;
+  margin-top: 18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx dashed #4b4941;
+  border-radius: 6rpx;
+  color: var(--muted);
+  font-size: 23rpx;
+  white-space: nowrap;
+}
+
+.cast-option {
+  position: relative;
+  min-width: 0;
+  min-height: 136rpx;
+  padding: 18rpx;
+  display: flex;
+  align-items: center;
+  gap: 14rpx;
+  border: 1rpx solid #3f4039;
+  border-radius: 6rpx;
+  background: #171916;
+  color: var(--text);
+  text-align: left;
+}
+
+.cast-option--selected {
+  border-color: var(--gold);
+  background: rgba(214, 182, 111, 0.1);
+}
+
+.cast-option:only-child {
+  grid-column: 1 / -1;
+}
+
+.cast-option actor-art {
+  flex: 0 0 96rpx;
+}
+
+.cast-option__copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.cast-option__name,
+.cast-option__role,
+.cast-option__state {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cast-option__name {
+  font-size: 27rpx;
+  font-weight: 800;
+}
+
+.cast-option__role {
+  margin-top: 5rpx;
+  color: var(--text-soft);
+  font-size: 21rpx;
+}
+
+.cast-option__state {
+  position: absolute;
+  top: 8rpx;
+  right: 10rpx;
+  color: var(--gold);
+  font-size: 18rpx;
+}
+
+.quantity-section,
+.binding-summary {
+  min-height: 112rpx;
+  margin-top: 20rpx;
+  padding: 14rpx 22rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.quantity-section__copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.quantity-section__title,
+.quantity-section__hint,
+.binding-summary__label,
+.binding-summary__value {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quantity-section__title,
+.binding-summary__label {
+  font-size: 27rpx;
+  font-weight: 800;
+}
+
+.quantity-section__hint {
+  margin-top: 5rpx;
+  color: var(--muted);
+  font-size: 20rpx;
+}
+
+.quantity-stepper {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.quantity-stepper__button {
+  --control-inset-y: 12rpx;
+  --control-border: var(--gold-dim);
+  --control-color: var(--gold);
+  --control-radius: 6rpx;
+  width: 72rpx;
+  min-width: 72rpx;
+  max-width: 72rpx;
+  padding: 0;
+  font-size: 28rpx;
+}
+
+.quantity-stepper__value {
+  width: 64rpx;
+  flex: 0 0 64rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.binding-summary__value {
+  min-width: 0;
+  color: var(--gold);
+  font-size: 24rpx;
+  font-weight: 700;
+  text-align: right;
+}
+
+.gift-detail-submit {
+  width: 100%;
+  margin-top: 22rpx;
+  font-size: 27rpx;
+}
+
+.gift-detail-submit--disabled {
+  opacity: 0.48;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .role-option,
+  .cast-option {
+    transition: none;
+  }
+}

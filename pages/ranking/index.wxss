@@ -1,5 +1,6 @@
 .ranking-page {
   padding-top: 18rpx;
+  padding-bottom: 160rpx;
 }
 
 .ranking-header {
@@ -14,6 +15,10 @@
 .ranking-header__title,
 .ranking-header__copy {
   display: block;
+  max-width: 430rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .ranking-header__title {
@@ -54,10 +59,13 @@
   background: transparent;
   color: #55544e;
   font-size: 25rpx;
+  white-space: nowrap;
+  transition: color 180ms ease, background-color 180ms ease, border-color 220ms ease;
 }
 
 .ranking-tab--active {
   border-bottom-color: #b89345;
+  background: #fffdf8;
   color: #292720;
   font-weight: 700;
 }
@@ -72,27 +80,34 @@
 }
 
 .period-switcher__button {
+  --control-inset-y: 6rpx;
+  --control-border: var(--gold-dim);
+  --control-color: var(--gold);
+  --control-radius: 50%;
   width: 88rpx;
-  height: 88rpx;
-  border: 1rpx solid var(--gold-dim);
-  border-radius: 50%;
-  background: transparent;
-  color: var(--gold);
+  min-width: 88rpx;
+  max-width: 88rpx;
+  flex: 0 0 88rpx;
   font-size: 38rpx;
 }
 
-.period-switcher__button[disabled] {
-  border-color: #35352f;
-  color: #4b4942;
+.period-switcher__button--disabled {
+  --control-border: #35352f;
+  --control-color: #55534a;
 }
 
 .period-switcher__copy {
+  min-width: 0;
+  flex: 1;
   text-align: center;
 }
 
 .period-switcher__eyebrow,
 .period-switcher__title {
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .period-switcher__eyebrow {
@@ -113,12 +128,18 @@
   justify-content: space-between;
   font-size: 32rpx;
   font-weight: 800;
+  white-space: nowrap;
 }
 
 .ranking-section-title__hint {
+  min-width: 0;
+  margin-left: 20rpx;
+  overflow: hidden;
   color: var(--muted);
   font-size: 24rpx;
   font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .podium-grid {
@@ -247,16 +268,6 @@
   font-weight: 700;
 }
 
-.rank-row__action {
-  min-width: 110rpx;
-  min-height: 88rpx;
-  border: 1rpx solid var(--gold-dim);
-  border-radius: 32rpx;
-  background: transparent;
-  color: var(--gold);
-  font-size: 24rpx;
-}
-
 .my-rank {
   min-height: 82rpx;
   margin-top: 16rpx;
@@ -266,6 +277,64 @@
   justify-content: space-between;
 }
 
+.my-rank__label,
+.my-rank__value {
+  white-space: nowrap;
+}
+
 .my-rank__value {
   color: var(--gold);
+}
+
+.ranking-cart-button {
+  position: fixed;
+  right: 18rpx;
+  bottom: calc(118rpx + env(safe-area-inset-bottom));
+  z-index: 40;
+  width: 88rpx;
+  min-width: 88rpx;
+  max-width: 88rpx;
+  height: 88rpx;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.ranking-cart-button::before {
+  content: '';
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  bottom: 10rpx;
+  left: 10rpx;
+  border: 1rpx solid #f0d487;
+  border-radius: 50%;
+  background: var(--gold-strong);
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.38);
+  transition: opacity 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+}
+
+.ranking-cart-button:active::before {
+  opacity: 0.86;
+  transform: scale(0.96);
+  box-shadow: 0 5rpx 14rpx rgba(0, 0, 0, 0.32);
+}
+
+.ranking-cart-button__icon {
+  position: relative;
+  z-index: 1;
+  width: 30rpx;
+  height: 30rpx;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ranking-tab,
+  .ranking-cart-button::before {
+    transition: none;
+  }
 }

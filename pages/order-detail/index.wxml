@@ -1,0 +1,63 @@
+<view class="page-shell order-detail-page {{pageMotionClass}}" wx:if="{{order}}">
+  <view class="order-detail-heading">
+    <text class="eyebrow">VOUCHER</text>
+    <text class="order-detail-heading__title">{{order.statusText}}</text>
+    <text class="order-detail-heading__hint">{{order.fulfillmentMode === 'ranking' ? (order.demo ? '演示打榜凭证 · 不会真实计分' : '送花打榜凭证') : (order.demo ? '演示凭证 · 不具备真实核销效力' : '到店核销凭证')}}</text>
+  </view>
+
+  <view class="voucher surface">
+    <view class="voucher__header">
+      <text class="voucher__type">{{order.typeText}}</text>
+      <text class="voucher__status">{{order.statusText}}</text>
+    </view>
+    <text class="voucher__title">{{order.title}}</text>
+    <text class="voucher__subtitle">{{order.subtitle}}</text>
+
+    <image
+      class="voucher__qr"
+      wx:if="{{order.verificationQrUrl}}"
+      src="{{order.verificationQrUrl}}"
+      mode="aspectFit"
+      show-menu-by-longpress="{{false}}"
+      aria-label="订单核销二维码"
+    />
+
+    <view class="voucher__code-wrap" wx:if="{{order.verificationCode}}">
+      <text class="voucher__code-label">{{order.fulfillmentMode === 'ranking' ? '打榜凭证码' : (order.demo ? '演示核销码' : '核销码')}}</text>
+      <text class="voucher__code">{{verificationCodeText}}</text>
+    </view>
+    <view class="voucher__pending" wx:else>
+      <text class="voucher__pending-title">凭证生成中</text>
+      <text class="voucher__pending-copy">支付结果确认后即可出示核销</text>
+    </view>
+
+    <text class="voucher__instruction">{{order.fulfillmentMode === 'ranking' ? '如积分未到账，可凭此码向门店或客服核对' : '到店后向工作人员出示此凭证，请勿提前泄露'}}</text>
+  </view>
+
+  <view class="order-facts surface">
+    <view class="order-fact">
+      <text class="order-fact__label">订单编号</text>
+      <text class="order-fact__value">{{order.orderNo}}</text>
+    </view>
+    <view class="order-fact">
+      <text class="order-fact__label">购买数量</text>
+      <text class="order-fact__value">{{order.quantity}} {{order.unitText || '件'}}</text>
+    </view>
+    <view class="order-fact">
+      <text class="order-fact__label">实付金额</text>
+      <text class="order-fact__value order-fact__value--gold">¥{{totalAmountText}}</text>
+    </view>
+    <view class="order-fact">
+      <text class="order-fact__label">{{order.fulfillmentMode === 'ranking' ? '计分方式' : '核销方式'}}</text>
+      <text class="order-fact__value">{{order.fulfillmentLabel}}</text>
+    </view>
+    <view class="order-fact">
+      <text class="order-fact__label">有效期限</text>
+      <text class="order-fact__value">{{order.validUntil}}</text>
+    </view>
+  </view>
+
+  <button class="voucher-action primary-button control-button pressable" wx:if="{{order.verificationCode}}" bindtap="copyCode">复制核销码</button>
+  <button class="voucher-action outline-button control-button pressable" wx:if="{{canRefresh}}" bindtap="refreshOrder">刷新凭证</button>
+  <button class="voucher-action outline-button control-button pressable" bindtap="openOrders">查看全部订单</button>
+</view>

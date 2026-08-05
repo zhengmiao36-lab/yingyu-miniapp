@@ -11,10 +11,18 @@
   gap: 24rpx;
 }
 
+.profile-summary__copy {
+  min-width: 0;
+  flex: 1;
+}
+
 .profile-summary__name,
 .profile-summary__role,
 .profile-summary__points {
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .profile-summary__name {
@@ -72,6 +80,7 @@
   border-radius: 4rpx;
   background: rgba(214, 182, 111, 0.08);
   color: var(--gold);
+  white-space: nowrap;
 }
 
 .schedule-row {
@@ -82,6 +91,11 @@
   border-bottom: 1rpx solid rgba(116, 98, 61, 0.35);
 }
 
+.schedule-row__copy {
+  min-width: 0;
+  flex: 1;
+}
+
 .schedule-row:last-child {
   border-bottom: 0;
 }
@@ -89,6 +103,9 @@
 .schedule-row__label,
 .schedule-row__time {
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .schedule-row__label {
@@ -103,17 +120,21 @@
 }
 
 .schedule-row__status {
-  min-width: 118rpx;
-  min-height: 88rpx;
+  --control-border: var(--gold-dim);
+  --control-bg: rgba(214, 182, 111, 0.08);
+  --control-color: var(--gold);
+  --control-radius: 28rpx;
+  width: 132rpx;
+  min-width: 132rpx;
+  max-width: 132rpx;
+  flex: 0 0 132rpx;
   padding: 0 16rpx;
-  border: 1rpx solid var(--gold-dim);
-  border-radius: 32rpx;
-  background: rgba(214, 182, 111, 0.08);
-  color: var(--gold);
   font-size: 24rpx;
+  white-space: nowrap;
 }
 
 .schedule-row__status--disabled {
-  border-color: #34342f;
-  color: var(--muted);
+  --control-border: #34342f;
+  --control-bg: transparent;
+  --control-color: var(--muted);
 }

@@ -1,12 +1,19 @@
 const { pastDays, scheduleDays } = require('../../utils/mock-data');
+const { playPageEnter, playContentEnter } = require('../../utils/motion');
 
 Page({
   data: {
+    pageMotionClass: '',
+    weekMotionClass: '',
     weekLabel: '7.27 - 8.2',
     weekOffset: 0,
     showPast: false,
     scheduleDays,
     pastDays
+  },
+
+  onShow() {
+    playPageEnter(this);
   },
 
   changeWeek(event) {
@@ -20,6 +27,8 @@ Page({
     this.setData({
       weekOffset: nextOffset,
       weekLabel: labels[nextOffset]
+    }, () => {
+      playContentEnter(this, 'weekMotionClass');
     });
   },
 
@@ -33,12 +42,8 @@ Page({
 
   buyTicket(event) {
     const { date, time } = event.currentTarget.dataset;
-    wx.showModal({
-      title: '演示购票',
-      content: `${date} ${time}\n当前原型未接入票务和支付系统。`,
-      showCancel: false,
-      confirmText: '知道了',
-      confirmColor: '#8d743d'
+    wx.navigateTo({
+      url: `/pages/checkout/index?type=ticket&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}`
     });
   }
 });

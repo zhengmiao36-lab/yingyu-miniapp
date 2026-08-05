@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "演员阵容",
+  "navigationBarTitleText": "商品详情",
   "usingComponents": {
     "actor-art": "/components/actor-art/index"
   }

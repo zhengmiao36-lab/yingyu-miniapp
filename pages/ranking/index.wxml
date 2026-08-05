@@ -1,4 +1,4 @@
-<view class="page-shell ranking-page">
+<view class="page-shell ranking-page {{pageMotionClass}}">
   <view class="ranking-header surface">
     <view>
       <text class="eyebrow">RANKING</text>
@@ -11,17 +11,18 @@
   </view>
 
   <view class="ranking-tabs">
-    <button class="ranking-tab pressable {{activeTab === 'cast' ? 'ranking-tab--active' : ''}}" data-tab="cast" bindtap="switchTab">卡司积分榜</button>
-    <button class="ranking-tab pressable {{activeTab === 'member' ? 'ranking-tab--active' : ''}}" data-tab="member" bindtap="switchTab">会员消费积分榜</button>
+    <button class="ranking-tab pressable {{activeTab === 'cast' ? 'ranking-tab--active' : ''}}" aria-pressed="{{activeTab === 'cast'}}" data-tab="cast" bindtap="switchTab">卡司积分榜</button>
+    <button class="ranking-tab pressable {{activeTab === 'member' ? 'ranking-tab--active' : ''}}" aria-pressed="{{activeTab === 'member'}}" data-tab="member" bindtap="switchTab">会员消费积分榜</button>
   </view>
 
+  <view class="ranking-content {{contentMotionClass}}">
   <view class="period-switcher surface">
-    <button class="period-switcher__button pressable" data-direction="-1" bindtap="changePeriod" disabled="{{periodOffset === -1}}">‹</button>
+    <button class="period-switcher__button control-button pressable {{periodOffset === -1 ? 'period-switcher__button--disabled control-button--disabled' : ''}}" aria-label="查看上一期" data-direction="-1" bindtap="changePeriod" disabled="{{periodOffset === -1}}">‹</button>
     <view class="period-switcher__copy">
       <text class="period-switcher__eyebrow">{{period}} · 本期</text>
       <text class="period-switcher__title">{{activeTab === 'cast' ? '卡司积分排行' : '会员消费积分排行'}}</text>
     </view>
-    <button class="period-switcher__button pressable" data-direction="1" bindtap="changePeriod" disabled="{{periodOffset === 1}}">›</button>
+    <button class="period-switcher__button control-button pressable {{periodOffset === 1 ? 'period-switcher__button--disabled control-button--disabled' : ''}}" aria-label="查看下一期" data-direction="1" bindtap="changePeriod" disabled="{{periodOffset === 1}}">›</button>
   </view>
 
   <view class="ranking-section-title">
@@ -64,12 +65,21 @@
         <text class="rank-row__role">{{item.subtitle}}</text>
         <text class="rank-row__points">{{activeTab === 'cast' ? '卡司积分' : '会员消费积分'}} {{item.points}}</text>
       </view>
-      <button class="rank-row__action pressable" wx:if="{{activeTab === 'cast'}}" catchtap="openStore">送花</button>
     </view>
   </view>
 
   <view class="my-rank surface" wx:if="{{activeTab === 'member'}}">
-    <text>我的位次</text>
+    <text class="my-rank__label">我的位次</text>
     <text class="my-rank__value">暂未上榜</text>
   </view>
+  </view>
 </view>
+
+<button
+  class="ranking-cart-button pressable"
+  wx:if="{{activeTab === 'cast'}}"
+  aria-label="小红花送花打榜"
+  bindtap="openGiftDetail"
+>
+  <image class="ranking-cart-button__icon" src="/assets/icons/shopping-cart.svg" mode="aspectFit" aria-hidden="true" />
+</button>

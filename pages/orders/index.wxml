@@ -1,0 +1,34 @@
+<view class="page-shell orders-page {{pageMotionClass}}">
+  <view class="orders-heading">
+    <text class="eyebrow">ORDERS</text>
+    <text class="orders-heading__title">我的订单</text>
+    <text class="orders-heading__hint">演出票、商城与送花打榜记录</text>
+  </view>
+
+  <view class="orders-list" wx:if="{{orders.length}}">
+    <button
+      class="order-card surface pressable"
+      wx:for="{{orders}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="openOrder"
+    >
+      <view class="order-card__top">
+        <text class="order-card__type">{{item.typeText}}</text>
+        <text class="order-card__status order-card__status--{{item.status}}">{{item.statusText}}</text>
+      </view>
+      <text class="order-card__title">{{item.title}}</text>
+      <text class="order-card__subtitle">{{item.subtitle}}</text>
+      <view class="order-card__bottom">
+        <text class="order-card__time">{{item.createdAt}}</text>
+        <text class="order-card__amount">¥{{item.totalAmountText}}</text>
+      </view>
+    </button>
+  </view>
+
+  <view class="orders-empty surface" wx:else>
+    <text class="orders-empty__title">暂无订单</text>
+    <text class="orders-empty__copy">购票、购物或送花打榜后可在此查看凭证</text>
+    <button class="orders-empty__button primary-button control-button pressable" bindtap="openStore">去商城</button>
+  </view>
+</view>

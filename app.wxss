@@ -13,6 +13,11 @@ page {
   --blue: #334653;
   --slate: #4c555d;
   --success: #2fc477;
+  --tap-target: 84rpx;
+  --control-visual-height: 60rpx;
+  --motion-enter: 260ms;
+  --motion-swap: 220ms;
+  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   min-height: 100%;
   background: var(--bg);
   color: var(--text);
@@ -47,6 +52,20 @@ button::after {
     radial-gradient(circle at 82% 66%, rgba(72, 34, 39, 0.12), transparent 30%);
 }
 
+.page-shell--entering {
+  animation: page-enter var(--motion-enter) var(--motion-ease-out) both;
+  transform-origin: center top;
+}
+
+.content-motion--enter {
+  animation: content-enter var(--motion-swap) var(--motion-ease-out) both;
+}
+
+.motion-reveal {
+  animation: reveal-enter 240ms var(--motion-ease-out) both;
+  transform-origin: center top;
+}
+
 .surface {
   background: rgba(17, 19, 17, 0.96);
   border: 1rpx solid var(--border);
@@ -77,33 +96,74 @@ button::after {
 }
 
 .pressable:active {
-  opacity: 0.72;
+  opacity: 0.78;
+}
+
+.control-button {
+  --control-inset-y: 12rpx;
+  position: relative;
+  z-index: 0;
+  flex-shrink: 0;
+  min-height: var(--tap-target);
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--control-color, var(--gold));
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.control-button::before {
+  content: '';
+  position: absolute;
+  top: var(--control-inset-y);
+  right: 0;
+  bottom: var(--control-inset-y);
+  left: 0;
+  z-index: -1;
+  border: 1rpx solid var(--control-border, transparent);
+  border-radius: var(--control-radius, 8rpx);
+  background: var(--control-bg, transparent);
+  box-shadow: var(--control-shadow, none);
+  transition: transform 160ms ease, opacity 160ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.control-button:active {
+  opacity: 1;
+}
+
+.control-button--disabled {
+  background-color: transparent !important;
+  color: var(--control-color, var(--gold)) !important;
+  opacity: 1 !important;
+}
+
+.control-button:active::before {
+  opacity: 0.82;
+  transform: scale(0.97);
 }
 
 .primary-button {
-  min-width: 96rpx;
-  min-height: 88rpx;
-  padding: 0 28rpx;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 36rpx;
-  background: var(--gold-strong);
-  color: #211a0c;
+  --control-bg: var(--gold-strong);
+  --control-color: #211a0c;
+  --control-radius: 28rpx;
+  --control-shadow: 0 8rpx 18rpx rgba(214, 182, 111, 0.12);
+  min-width: 112rpx;
   font-weight: 700;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .outline-button {
-  min-height: 88rpx;
-  padding: 0 24rpx;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1rpx solid var(--gold-dim);
-  border-radius: 8rpx;
-  background: transparent;
-  color: var(--gold);
+  --control-border: var(--gold-dim);
+  --control-color: var(--gold);
+  --control-radius: 8rpx;
+  flex: 0 0 auto;
   font-weight: 600;
 }
 
@@ -120,8 +180,48 @@ button::after {
   color: var(--text-soft);
 }
 
+@keyframes page-enter {
+  from {
+    opacity: 0.01;
+    transform: translateY(12rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes content-enter {
+  from {
+    opacity: 0.01;
+    transform: translateY(8rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-enter {
+  from {
+    opacity: 0.01;
+    transform: translateY(-8rpx) scaleY(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .pressable {
+  .pressable,
+  .control-button::before {
     transition: none;
+  }
+
+  .page-shell--entering,
+  .content-motion--enter,
+  .motion-reveal {
+    animation: none;
   }
 }

@@ -1,4 +1,4 @@
-<view class="page-shell schedule-page">
+<view class="page-shell schedule-page {{pageMotionClass}}">
   <stage-poster title="雾隐长安" subtitle="沉浸式互动剧场" />
 
   <view class="member-strip surface">
@@ -8,15 +8,15 @@
 
   <view class="week-switcher surface">
     <button
-      class="week-switcher__button pressable"
+      class="week-switcher__button control-button pressable {{weekOffset === -1 ? 'week-switcher__button--disabled control-button--disabled' : ''}}"
       aria-label="查看上一周"
       data-direction="-1"
       bindtap="changeWeek"
       disabled="{{weekOffset === -1}}"
     >‹</button>
-    <text class="week-switcher__label">{{weekLabel}}</text>
+    <text class="week-switcher__label {{weekMotionClass}}">{{weekLabel}}</text>
     <button
-      class="week-switcher__button pressable"
+      class="week-switcher__button control-button pressable {{weekOffset === 1 ? 'week-switcher__button--disabled control-button--disabled' : ''}}"
       aria-label="查看下一周"
       data-direction="1"
       bindtap="changeWeek"
@@ -27,12 +27,12 @@
   <button class="past-toggle surface pressable" bindtap="togglePast" aria-expanded="{{showPast}}">
     <view class="past-toggle__copy">
       <text class="past-toggle__dot"></text>
-      <text>往期排班 2 天</text>
+      <text class="past-toggle__label">往期排班 2 天</text>
     </view>
     <text class="past-toggle__action">{{showPast ? '收起' : '展开'}} {{showPast ? '^' : 'v'}}</text>
   </button>
 
-  <block wx:if="{{showPast}}">
+  <view class="past-days motion-reveal" wx:if="{{showPast}}">
     <view class="day-card surface day-card--past" wx:for="{{pastDays}}" wx:key="date" wx:for-item="day">
       <view class="day-card__header">
         <view>
@@ -43,7 +43,7 @@
       </view>
       <view class="session" wx:for="{{day.sessions}}" wx:key="time" wx:for-item="session">
         <view class="session__top">
-          <view>
+          <view class="session__copy">
             <text class="session__time">{{session.time}}</text>
             <text class="session__status">{{session.status}}</text>
           </view>
@@ -56,7 +56,7 @@
         </view>
       </view>
     </view>
-  </block>
+  </view>
 
   <view class="day-card surface" wx:for="{{scheduleDays}}" wx:key="date" wx:for-item="day">
     <view class="day-card__header">
@@ -64,19 +64,19 @@
         <text class="day-card__date">{{day.date}}</text>
         <text class="day-card__weekday">{{day.weekday}}</text>
       </view>
-      <button class="cast-count pressable" bindtap="openCast">卡司照 9</button>
+      <button class="cast-count control-button pressable" bindtap="openCast">卡司照 9</button>
     </view>
 
     <view class="session" wx:for="{{day.sessions}}" wx:key="time" wx:for-item="session">
       <view class="session__top">
-        <view>
+        <view class="session__copy">
           <text class="session__time">{{session.time}}</text>
           <text class="session__status">{{session.status}}</text>
         </view>
         <view class="session__actions">
           <text class="session__left">余 {{session.left}} 张</text>
           <button
-            class="primary-button pressable"
+            class="primary-button control-button pressable"
             data-date="{{day.date}}"
             data-time="{{session.time}}"
             bindtap="buyTicket"

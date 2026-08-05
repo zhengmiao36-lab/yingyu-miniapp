@@ -1,8 +1,14 @@
 const { actors } = require('../../utils/mock-data');
+const { playPageEnter } = require('../../utils/motion');
 
 Page({
   data: {
+    pageMotionClass: '',
     actor: null
+  },
+
+  onShow() {
+    playPageEnter(this);
   },
 
   onLoad(options) {
@@ -17,12 +23,8 @@ Page({
       wx.showToast({ title: '本场已售罄', icon: 'none' });
       return;
     }
-    wx.showModal({
-      title: '演示预约',
-      content: `${date} ${time}\n当前原型未接入正式票务。`,
-      showCancel: false,
-      confirmText: '知道了',
-      confirmColor: '#8d743d'
+    wx.navigateTo({
+      url: `/pages/checkout/index?type=ticket&actorId=${this.data.actor.id}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}`
     });
   }
 });

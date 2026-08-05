@@ -38,6 +38,14 @@
 .profile-hero__name,
 .profile-hero__id {
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-hero__copy,
+.profile-hero__account {
+  min-width: 0;
 }
 
 .profile-hero__title {
@@ -67,15 +75,15 @@
 }
 
 .profile-hero__login {
+  --control-border: #77705d;
+  --control-bg: rgba(7, 8, 8, 0.42);
+  --control-color: var(--text);
+  --control-radius: 6rpx;
   width: 100%;
-  min-height: 88rpx;
   margin-top: 28rpx;
-  border: 1rpx solid #77705d;
-  border-radius: 6rpx;
-  background: rgba(7, 8, 8, 0.42);
-  color: var(--text);
   font-size: 25rpx;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .profile-editor {
@@ -91,9 +99,17 @@
   gap: 18rpx;
 }
 
+.profile-editor__copy {
+  min-width: 0;
+  flex: 1;
+}
+
 .profile-editor__title,
 .profile-editor__hint {
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .profile-editor__title {
@@ -148,6 +164,14 @@
 .profile-menu__title,
 .profile-menu__hint {
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-menu__copy {
+  min-width: 0;
+  flex: 1;
 }
 
 .profile-menu__title {

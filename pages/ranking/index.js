@@ -1,4 +1,5 @@
 const { actors, memberRanking } = require('../../utils/mock-data');
+const { playPageEnter, playContentEnter } = require('../../utils/motion');
 
 const castRanking = actors.map((actor) => ({
   id: actor.id,
@@ -6,14 +7,20 @@ const castRanking = actors.map((actor) => ({
   subtitle: actor.role,
   points: actor.points,
   theme: actor.theme
-}));
+})).sort((a, b) => b.points - a.points);
 
 Page({
   data: {
+    pageMotionClass: '',
+    contentMotionClass: '',
     activeTab: 'cast',
     ranking: castRanking,
     period: '第二期榜单',
     periodOffset: 0
+  },
+
+  onShow() {
+    playPageEnter(this);
   },
 
   switchTab(event) {
@@ -21,6 +28,8 @@ Page({
     this.setData({
       activeTab,
       ranking: activeTab === 'cast' ? castRanking : memberRanking
+    }, () => {
+      playContentEnter(this);
     });
   },
 
@@ -32,7 +41,9 @@ Page({
       0: '第二期榜单',
       1: '第三期榜单'
     };
-    this.setData({ periodOffset, period: labels[periodOffset] });
+    this.setData({ periodOffset, period: labels[periodOffset] }, () => {
+      playContentEnter(this);
+    });
   },
 
   openActor(event) {
@@ -40,7 +51,9 @@ Page({
     wx.navigateTo({ url: `/pages/actor-detail/index?id=${event.currentTarget.dataset.id}` });
   },
 
-  openStore() {
-    wx.switchTab({ url: '/pages/store/index' });
+  openGiftDetail() {
+    wx.navigateTo({
+      url: '/pages/gift-detail/index?itemId=flower'
+    });
   }
 });
